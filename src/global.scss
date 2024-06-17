@@ -1,0 +1,203 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+:root {
+  --primary-color: #006398;
+  --secondary-color: #00a558;
+  --accent-color: #f2f1fa;
+  --body-color: #f5f7f9;
+  --toggle-color: #ddd;
+  --sidebar-color: #fff;
+  --text-color: #7f7f7f;
+  --white-color: #ffffff;
+  --tw-gradient-color: var(--secondary-color), var(--primary-color);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #0172af;
+}
+
+.primary-color-bg {
+  background-color: #006398;
+}
+
+.secondary-color-bg {
+  background-color: #00a558;
+}
+
+.accent-color-bg {
+  background-color: #f2f1fa;
+}
+
+.primary-color-text {
+  color: #006398;
+}
+
+.secondary-color-text {
+  color: #00a558;
+}
+
+.accent-color-text {
+  color: #f2f1fa;
+}
+
+.primary-color-text-50 {
+  color: rgba(0, 99, 152, 0.5); /* 0.5 represents 50% opacity */
+}
+
+.primary-color-border {
+  border-color: #006398; /* 0.5 represents 50% opacity */
+}
+.primary-color-border-50 {
+  border-color: rgba(0, 99, 152, 0.5); /* 0.5 represents 50% opacity */
+}
+
+.login-input-color-text {
+  color: #2f3d4c;
+}
+
+@font-face {
+  font-family: "Poppins-r";
+  src: url("/assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-b";
+  src: url("/assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-sb";
+  src: url("/assets/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto-r";
+  src: url("/assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto-b";
+  src: url("/assets/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+}
+
+.roboto {
+  font-family: "Roboto-r";
+}
+.roboto-b {
+  font-family: "Roboto-b";
+}
+
+.poppins {
+  font-family: "Poppins-r";
+}
+.poppins-b {
+  font-family: "Poppins-b";
+}
+
+.poppins-sb {
+  font-family: "Poppins-sb";
+}
+
+.gradient-color {
+  background-image: linear-gradient(
+    to right,
+    var(--tw-gradient-color),
+    var(--tw-gradient-color)
+  );
+  background-size: 100% 100%;
+}
+
+@tailwind base;
+@layer base {
+  img {
+    @apply inline-block;
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
+ion-content {
+  --background: #f2f1fa;
+}
+
+
+:root{
+  --snackbar-color: white;
+  --snackbar-color-text: rgb(35, 53, 80);
+  
+}
+
+/* SNACKBAR */
+
+.mat-mdc-snack-bar-container {
+  margin: 22px!important;
+  position: static;
+  border-radius: 30px !important;
+}
+
+.cdk-overlay-container {
+position: fixed;
+z-index: 10000!important;
+}
+
+.default-snackbar{
+  --mdc-snackbar-container-color:  var(--snackbar-color);
+  --mat-mdc-snack-bar-button-color: var(--snackbar-color-text) ;
+  --mdc-snackbar-supporting-text-color : var(--snackbar-color-text) ;
+
+}
+.default-snackbar .mdc-button__label{
+  color:blue;
+}
+
+.default-snackbar-success .mdc-button__label,
+.default-snackbar-error .mdc-button__label{
+  color:white;
+}
+
+.default-snackbar-success{
+--mdc-snackbar-container-color:  rgb(3, 201, 79);
+--mat-mdc-snack-bar-button-color: white;
+--mdc-snackbar-supporting-text-color : white;
+}
+
+.default-snackbar-error{
+  --mdc-snackbar-container-color:  red;
+  --mat-mdc-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color : white;
+  z-index: 100000!important;
+}
+
+
+.invalid-input{
+border-color: red!important;
+}

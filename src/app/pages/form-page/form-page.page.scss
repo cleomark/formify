@@ -1,0 +1,37 @@
+.ion-button {
+  --background: none;
+  --border: none;
+}
+.scroll-container {
+  max-height: calc(100vh - 100px);
+}
+
+.form-container {
+  border: 1px solid #ccc;
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #808080bf;
+    }
+
+    input {
+      color: #4caf50;
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      background-color: #fff;
+      box-shadow: 0 0 2px #00000049;
+    }
+  }
+
+  button {
+    background-color: #4caf50;
+    &:disabled {
+      background-color: #ccc;
+    }
+  }
+}

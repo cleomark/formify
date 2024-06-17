@@ -1,0 +1,42 @@
+.blue-header {
+    --background: blue;
+  }
+  
+  .icon-red {
+    color: red;
+  }
+  
+  .icon-green {
+    color: green;
+  }
+  
+
+  .search{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50px;
+    color: black;
+}
+.IC-filter{
+    position: absolute;
+    transform: translate(-13%, 14%);
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 0px 20px 20px 0px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.IC-filter ion-img{
+    width: 23px;
+    height: 23px;
+    margin: 0;
+}
+
+.ion-icon-big {
+  font-size: 24px; /* Adjust the size as needed */
+  margin-left: 8px; /* Add space to the left */
+}

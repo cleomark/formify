@@ -1,0 +1,66 @@
+
+<div class="flex w-full h-full">
+  <!-- SIDE BAR -->
+  <div class="w-[20%] bg-white">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <ion-content [fullscreen]="true">
+
+    <!-- start -->
+  <div class="mx-8 mt-10 mb-10"> 
+      <!-- title -->
+      <div class="flex text-center justify-center mb-6"> 
+        <p class="text-3xl font-semibold text-blue-700"> Messages </p>
+      </div>
+      
+      <!-- search bar -->
+      <ion-input [value]="search" (input)="updateSearch($event)" class="ion-padding search" placeholder="Search">
+        <div class="IC-filter">
+            <ion-icon name="search-outline"></ion-icon>
+        </div>
+      </ion-input>
+    </div>
+  
+    <!-- ppl -->
+    <ng-container  *ngFor="let conversation of people" >
+        <div *ngIf="conversation.username.toLowerCase().includes(search.toLowerCase())" class="flex-1 overflow-y-auto mx-8 mt-2"  (click)="openMessages(conversation.id,conversation.username, conversation.type)" >
+        <div >
+            <div class="flex mb-4 items-center">
+                <img src="./assets/cleo.jpg" alt="Profile Picture" class="w-12 h-12 rounded-full mr-4">
+                <div  class="flex-grow">
+                    <div class="flex justify-between"> 
+    
+                        <div>
+                            <p class="font-normal text-lg text-blue-700">{{conversation.username}}</p>
+                        </div>
+                        <div class="mt-2.5 mr-2">
+                            <p *ngIf="conversation.inbox > 0" class="font-normal text-lg rounded-full w-2 h-2 bg-blue-700 text-gray-500"> </p>
+                        </div>
+                        
+                    </div>
+                    <div class="flex justify-between"> 
+                        
+                        <div>
+                            <p class="font-normal text-md text-gray-700">{{(conversation.lastmessage !=null) ? conversation.lastmessage.message: 'Start a conversation!'}}</p>
+                        </div>
+                        <div>
+                            <p class="font-normal text-md text-gray-700"> {{(conversation.lastmessage!= null)? parseTime(conversation.lastmessage.timestamp) : ''}}</p>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            </div>
+            </div>
+    </ng-container>
+    
+      
+    
+  </ion-content>
+  
+
+  
+</div>

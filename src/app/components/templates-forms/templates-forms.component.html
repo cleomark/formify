@@ -1,0 +1,189 @@
+
+  <div class="header flex pl-4 pt-8 text-[#006398] bg-white shadow-md">
+    <button (click)="cancel()" class="bts text -mt-6">&#8249;</button><h1 class="ml-4 font-bold">Task Form</h1>
+  </div>
+
+
+<ion-content>
+  
+  <form id="farmerForm" (ngSubmit)="submitForm()">
+    <div class="one">
+      <h2>PHILIPPINE CROP INSURANCE CORPORATION</h2>
+      <p>Region IIV</p>
+      <h5>Corn</h5>
+      <h4>POST PLANTING INSPECTION REPORT</h4>
+    </div>
+      
+        <label for="name">Name of Farmer:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="type">Type of Farmer:</label>
+        <input type="text" id="type" name="type" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required>
+
+        <label for="groupName">Group Name:</label>
+        <input type="text" id="groupName" name="groupName">
+
+        <label for="groupAddress">Group Address:</label>
+        <input type="text" id="groupAddress" name="groupAddress">
+
+        <label for="lenderName">Lender Name:</label>
+        <input type="text" id="lenderName" name="lenderName" required>
+
+        <label for="lenderAddress">Lender Address:</label>
+        <input type="text" id="lenderAddress" name="lenderAddress" required>
+
+        <label for="cicNo">CIC No:</label>
+        <input type="text" id="cicNo" name="cicNo" required>
+
+        <label for="farmLocation">Location of Farm:</label>
+        <input type="text" id="farmLocation" name="farmLocation" required>
+      
+    <div>
+        <label for="">Location of Sketch Plan</label>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <label for="north">North: </label>
+              <input type="text" id="north" name="north" required>
+            </ion-col>
+            <ion-col>
+              <label for="south">South: </label>
+              <input type="text" id="south" name="south" required> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <label for="east">East: </label>
+              <input type="text" id="east" name="east" required>
+            </ion-col>
+            <ion-col>
+              <label for="west">West: </label>
+             <input type="text" id="west" name="west" required>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>   
+
+    <h5>Findings</h5>
+
+    <h3 class="h33">Location of Sketch Plan</h3>
+
+    <div class="ti">
+      <h3>Per ACI</h3>
+      <h3>ACTUAL</h3>
+    </div>
+
+<div class="f">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <label for="areaPlanted">Area Planted: </label>
+        <input class="sketch-area" type="text" id="areaPlanted" name="areaPlanted" required>
+      </ion-col>
+      <ion-col>
+        <label for="ppirArea">:</label>
+        <input type="text" id="ppirArea" name="ppirArea" required> 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <label for="datePlanning">Date of Planting(DS): </label>
+        <input type="text" id="datePlanning" name="datePlanning" required>
+      </ion-col>
+      <ion-col>
+        <label for="ppirDopds">:</label>
+        <input type="text" id="ppirDopds" name="ppirDopds" required>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <label for="tp">(TP): </label>
+        <input type="text" id="tp" name="tp" required>
+      </ion-col>
+      <ion-col>
+        <label for="ppirDoptp">:</label>
+        <input type="text" id="ppirDoptp" name="ppirDoptp" required>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <label for="seedVariety">Seed Variety: </label>
+        <input  type="text" id="seedVariety" name="seedVariety" required>
+      </ion-col>
+      <ion-col>
+        <label for="pcicList">:</label>
+        <input type="text" id="pcicList" name="pcicList" required>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+  
+    <label for="cornVariety">Select Corn Variety:</label>
+    <select id="cornVariety" name="cornVariety">
+      <option value="NSIC RC150(TUBIGAN 9)DWSR">NSIC RC150(TUBIGAN 9)DWSR</option>
+      <option value="PSB Cn-5 /P-3278 (Y8 G-61)">PSB Cn-5 /P-3278 (Y8 G-61)</option>
+      <option value="PSB Cn-4 /SX 767 (CPX 312) hybrid">PSB Cn-4 /SX 767 (CPX 312) hybrid</option>
+      <option value="PSB Cn-7 /CPX 912 (CPX 912) hybrid">PSB Cn-7 /CPX 912 (CPX 912) hybrid</option>
+      <option value="PSB Cn-9 /P-3234 (Y8 G-66) hybrid">PSB Cn-9 /P-3234 (Y8 G-66) hybrid</option>
+      <option value="PSB Cn-2 /P-3262">PSB Cn-2 /P-3262</option>
+      <option value="IPB Var 1E - PSB Cn 90-1 IPB Var 5">IPB Var 1E - PSB Cn 90-1 IPB Var 5</option>
+      <option value="PSB Cn-3 /VM-2 (VISCA 8550)">PSB Cn-3 /VM-2 (VISCA 8550)</option>
+      <option value="PSB Cn-6 /SMC E-25 (SMC E-25) hybrid">PSB Cn-6 /SMC E-25 (SMC E-25) hybrid</option>
+      <option value="PSB Cn-8 /US Var 6 (USMARC 2088)">PSB Cn-8 /US Var 6 (USMARC 2088)</option>
+      <option value="Cargill 747">Cargill 747</option>
+      <option value="PSB Cn-1 /IPB Var 5 (IES Var 1E)">PSB Cn-1 /IPB Var 5 (IES Var 1E)</option>
+      <option value="Y8 G-61 - PSBCn 90-5 P 3278">Y8 G-61 - PSBCn 90-5 P 3278</option>
+      <option value="VISCA 8550 - PSB Cn 90-2 IPB VM 2">VISCA 8550 - PSB Cn 90-2 IPB VM 2</option>
+      <option value="CPX-811 - PSBCn 90-4 SX 767">CPX-811 - PSBCn 90-4 SX 767</option>
+      <option value="Y8 G-66 - PSBCn 90-9 P-3234">Y8 G-66 - PSBCn 90-9 P-3234</option>            
+    </select>
+
+    <div class="mb-3">
+      <label for="remarks" class="form-label">Remarks :</label>
+      <textarea id="remarks" name="remarks" rows="3"></textarea>
+    </div>
+
+    <div>
+      <ion-grid>
+        <ion-row class="ion-justify-content-start">
+          <ion-col size="4">
+            <label for="conformedBy">Conformed by:</label>
+            <input class="i" type="text" id="conformedBy" name="conformedBy" required>
+            <p class="in">Insured</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-end">
+          <ion-col size="4">
+            <label for="preparedBy" class="pre">Prepared by:</label>
+            <input class="u" type="text" id="preparedBy" name="preparedBy" required>
+            <p class="ui">UI/IA</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+    <button class="bt" type="submit">Submit</button>
+  </form>
+  
+</ion-content>

@@ -1,0 +1,172 @@
+<!-- manageuser.page.html -->
+
+<div class="flex w-full h-full">
+  <div class="w-[20%] bg-white">
+    <!-- Your sidebar component -->
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <ion-content class="ion-padding">
+    <div class="top-bar">
+      <div class="search-bar">
+        <ion-icon name="search" class="search-icon"></ion-icon>
+        <input type="text" class="search-input" placeholder="Search by name" (input)="handleSearch($event)">
+      </div>
+      <ion-button class="add-agent-btn" (click)="openAdduser()">
+        <ion-icon name="add" class="add-icon"></ion-icon> Add User
+      </ion-button>
+
+      <ion-item class="sort-dropdown">
+        <ion-label>Sort: </ion-label>
+        <ion-select [(ngModel)]="sortField" (ionChange)="sortUsers()">
+          <ion-select-option value="id">ID</ion-select-option>
+          <ion-select-option value="fullname">Name</ion-select-option>
+          <ion-select-option value="location">Location</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <ion-label for="agent" class="poppins-b text-xl text-blue-500">Agent</ion-label>
+
+    <table class="agent">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Location Assigned</th>
+          <th>Documents Assigned</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody">
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.fullname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.location }}</td>
+          <td>{{ (user.documents ==null) ? 'No Documents':user.documents}}</td>
+          <td>
+            <div class="actions">
+              <ion-icon name="trash" class="delete-agent" data-tooltip="Delete User" (click)="deleteUser(user)"></ion-icon>
+              <ion-icon name="create" class="edit-agent" data-tooltip="Edit User" (click)="openEditUserModal(user)"></ion-icon>
+              <ion-icon name="locate" class="locate-agent" data-tooltip="Locate User" (click)="openModal()"></ion-icon>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <input type="file" (change)="onFileChange($event)" accept=".csv">
+    <!-- <div class="w-full overflow-x-auto">
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th>Task_Number</th>
+            <th>Service_Group</th>
+            <th>Service_Type</th>
+            <th>Priority</th>
+            <th>Task_Status</th>
+            <th>Assignee</th>
+            <th>ppir_assignmentid</th>
+            <th>ppir_insuranceid</th>
+            <th>ppir_farmername</th>
+            <th>ppir_address</th>
+            <th>ppir_farmertype</th>
+            <th>ppir_mobileno</th>
+            <th>ppir_groupname</th>
+            <th>ppir_groupaddress</th>
+            <th>ppir_lendername</th>
+            <th>ppir_lenderaddress</th>
+            <th>ppir_cicno</th>
+            <th>ppir_farmloc</th>
+            <th>ppir_north</th>
+            <th>ppir_south</th>
+            <th>ppir_east</th>
+            <th>ppir_west</th>
+            <th>ppir_att_1</th>
+            <th>ppir_att_2</th>
+            <th>ppir_att_3</th>
+            <th>ppir_att_4</th>
+            <th>ppir_area_aci</th>
+            <th>ppir_area_act</th>
+            <th>ppir_dopds_aci</th>
+            <th>ppir_dopds_act</th>
+            <th>ppir_doptp_aci</th>
+            <th>ppir_doptp_act</th>
+            <th>ppir_svp_aci</th>
+            <th>ppir_svp_act</th>
+            <th>ppir_variety</th>
+            <th>ppir_stagecrop</th>
+            <th>ppir_remarks</th>
+            <th>ppir_name_insured</th>
+            <th>ppir_name_iuia</th>
+            <th>ppir_sig_insured</th>
+            <th>ppir_sig_iuia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of csvData" class="overflow-x-auto">
+            <td>{{row.Task_Number}}</td>
+            <td>{{row.Service_Group}}</td>
+            <td>{{row.Service_Type}}</td>
+            <td>{{row.Priority}}</td>
+            <td>{{row.Task_Status}}</td>
+            <td>{{row.Assignee}}</td>
+            <td>{{row.ppir_assignmentid}}</td>
+            <td>{{row.ppir_insuranceid}}</td>
+            <td>{{row.ppir_farmername}}</td>
+            <td>{{row.ppir_address}}</td>
+            <td>{{row.ppir_farmertype}}</td>
+            <td>{{row.ppir_mobileno}}</td>
+            <td>{{row.ppir_groupname}}</td>
+            <td>{{row.ppir_groupaddress}}</td>
+            <td>{{row.ppir_lendername}}</td>
+            <td>{{row.ppir_lenderaddress}}</td>
+            <td>{{row.ppir_cicno}}</td>
+            <td>{{row.ppir_farmloc}}</td>
+            <td>{{row.ppir_north}}</td>
+            <td>{{row.ppir_south}}</td>
+            <td>{{row.ppir_east}}</td>
+            <td>{{row.ppir_west}}</td>
+            <td>{{row.ppir_att_1}}</td>
+            <td>{{row.ppir_att_2}}</td>
+            <td>{{row.ppir_att_3}}</td>
+            <td>{{row.ppir_att_4}}</td>
+            <td>{{row.ppir_area_aci}}</td>
+            <td>{{row.ppir_area_act}}</td>
+            <td>{{row.ppir_dopds_aci}}</td>
+            <td>{{row.ppir_dopds_act}}</td>
+            <td>{{row.ppir_doptp_aci}}</td>
+            <td>{{row.ppir_doptp_act}}</td>
+            <td>{{row.ppir_svp_aci}}</td>
+            <td>{{row.ppir_svp_act}}</td>
+            <td>{{row.ppir_variety}}</td>
+            <td>{{row.ppir_stagecrop}}</td>
+            <td>{{row.ppir_remarks}}</td>
+            <td>{{row.ppir_name_insured}}</td>
+            <td>{{row.ppir_name_iuia}}</td>
+            <td>{{row.ppir_sig_insured}}</td>
+            <td>{{row.ppir_sig_iuia}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      
+    </div>
+    
+    <div *ngFor="let item of csvData; let i = index" class="row-division">
+      <div class="border border-gray-500 mt-3">
+        Row {{i + 1}}
+      
+      <div *ngFor="let key of objectKeys(item)" class="item-field mt-[20px] border-gray-500">
+        <label for="{{key}}_{{i}}">{{key}}</label>
+        <input id="{{key}}_{{i}}" [value]="item[key]" [disabled]="item[key] !== ''" placeholder="{{key}}">
+      </div>
+    </div>
+    </div> -->
+    
+    
+  </ion-content>
+</div>

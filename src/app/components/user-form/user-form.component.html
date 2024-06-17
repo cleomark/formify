@@ -1,0 +1,38 @@
+<div class="body">
+  <div class="header flex pl-4 pt-8 text-[#006398] bg-white shadow-md">
+    <button (click)="cancel()" class="text -mt-6">&#8249;</button><h1 class="ml-4 font-bold">Task Form</h1>
+  </div>
+
+
+<div class="container poppins">
+    <!-- <h2 class="text-[#006398] poopins-b font-black">{{passedData}}</h2> -->
+    <form>
+      <ng-container 
+       *ngFor="let form of forms|keyvalue"
+      >
+      <ng-container *ngIf="getKey(form.value.id) == 'textfield'">
+        <label class="text-[#006398]" for="name">{{form.value.content}}</label>
+          <input type="text" id="{{form.value.id}}" name="name" required>
+      </ng-container>
+
+      <ng-container *ngIf="getKey(form.value.id) == 'checkbox'" >
+        <label class="text-[#006398]" for="{{form.value.id}}">{{form.value.content}}</label>
+          <select id="{{form.value.id}}" name="{{form.value.id}}" required>
+            <option *ngFor="let option of getMap(form.value.options)|keyvalue" value="minimal">{{option.value}}</option>
+          </select>
+      </ng-container>
+
+      <!-- <ng-container *ngIf="getKey(form.value.id) == 'imagefield'">
+        <label class="text-[#006398]" for="name">Y</label>
+          <input type="text" id="{{form.value.id}}" name="name" required>
+      </ng-container> -->
+
+      <!-- <label class="text-[#006398]" for="needs">Immediate Needs:</label>
+      <textarea id="needs" name="needs" rows="4" required></textarea> -->
+    </ng-container>
+
+    <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</div>

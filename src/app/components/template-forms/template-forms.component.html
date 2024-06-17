@@ -1,0 +1,475 @@
+<div class="header flex pl-4 pt-8 text-[#006398] bg-white shadow-md">
+  <button (click)="cancel()" class="bts text -mt-6">&#8249;</button><h1 class="ml-4 font-bold">Task Form</h1>
+</div>
+
+<ion-content>
+
+<form id="farmerForm" (ngSubmit)="submitForm()">
+  <div class="one">
+    <h2>PHILIPPINE CROP INSURANCE CORPORATION</h2>
+    <p>Region IIV</p>
+    <h5>Rice</h5>
+    <h4>POST PLANTING INSPECTION REPORT</h4>
+  </div>
+    
+      <label for="name">Name of Farmer:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="type">Type of Farmer:</label>
+      <input type="text" id="type" name="type" required>
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" name="mobile" required>
+
+      <label for="groupName">Group Name:</label>
+      <input type="text" id="groupName" name="groupName">
+
+      <label for="groupAddress">Group Address:</label>
+      <input type="text" id="groupAddress" name="groupAddress">
+
+      <label for="lenderName">Lender Name:</label>
+      <input type="text" id="lenderName" name="lenderName" required>
+
+      <label for="lenderAddress">Lender Address:</label>
+      <input type="text" id="lenderAddress" name="lenderAddress" required>
+
+      <label for="cicNo">CIC No:</label>
+      <input type="text" id="cicNo" name="cicNo" required>
+
+      <label for="farmLocation">Location of Farm:</label>
+      <input type="text" id="farmLocation" name="farmLocation" required>
+    
+  <div>
+      <label for="">Location of Sketch Plan</label>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <label for="north">North: </label>
+            <input type="text" id="north" name="north" required>
+          </ion-col>
+          <ion-col>
+            <label for="south">South: </label>
+            <input type="text" id="south" name="south" required> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <label for="east">East: </label>
+            <input type="text" id="east" name="east" required>
+          </ion-col>
+          <ion-col>
+            <label for="west">West: </label>
+           <input type="text" id="west" name="west" required>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>   
+
+  <h5>Findings</h5>
+
+  <h3 class="h33">Location of Sketch Plan</h3>
+
+  <div class="ti">
+    <h3>Per ACI</h3>
+    <h3>ACTUAL</h3>
+  </div>
+
+<div class="f">
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <label for="areaPlanted">Area Planted: </label>
+      <input class="sketch-area" type="text" id="areaPlanted" name="areaPlanted" required>
+    </ion-col>
+    <ion-col>
+      <label for="ppirArea">:</label>
+      <input type="text" id="ppirArea" name="ppirArea" required> 
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <label for="datePlanning">Date of Planting(DS): </label>
+      <input type="text" id="datePlanning" name="datePlanning" required>
+    </ion-col>
+    <ion-col>
+      <label for="ppirDopds">:</label>
+      <input type="text" id="ppirDopds" name="ppirDopds" required>  
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <label for="tp">(TP): </label>
+      <input type="text" id="tp" name="tp" required>
+    </ion-col>
+    <ion-col>
+      <label for="ppirDoptp">:</label>
+      <input type="text" id="ppirDoptp" name="ppirDoptp" required>  
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <label for="seedVariety">Seed Variety: </label>
+      <input  type="text" id="seedVariety" name="seedVariety" required>
+    </ion-col>
+    <ion-col>
+      <label for="pcicList">:</label>
+      <input type="text" id="pcicList" name="pcicList" required>  
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</div>
+
+    <label for="riceVariety">Select Rice Variety:</label>
+    <select id="riceVariety" name="riceVariety">
+      <option value="NSIC RC150(TUBIGAN 9)DWSR">NSIC RC150(TUBIGAN 9)DWSR</option>
+                <option value="NSIC RC152 (TUBIGAN 10) DWSR">NSIC RC152 (TUBIGAN 10) DWSR</option>
+                <option value="NSIC RC134 (TUBIGAN 4) DWSR">NSIC RC134 (TUBIGAN 4) DWSR</option>
+                <option value="NSIC RC144 (TUBIGAN 8) DWSR">NSIC RC144 (TUBIGAN 8) DWSR</option>
+                <option value="NSIC RC196H (MESTISO 16)">NSIC RC196H (MESTISO 16)</option>
+                <option value="NSIC 2010 RC226 (TUBIGAN20) DWSR">NSIC 2010 RC226 (TUBIGAN20) DWSR</option>
+                <option value="NSIC RC130 (TUBIGAN 3) DWSR">NSIC RC130 (TUBIGAN 3) DWSR</option>
+                <option value="NSIC RC140 (TUBIGAN 6) DWSR">NSIC RC140 (TUBIGAN 6) DWSR</option>
+                <option value="NSIC RC146 (PJ7) DWSR">NSIC RC146 (PJ7) DWSR</option>
+                <option value="NSIC RC156 (TUBIGAN 12) DWSR">NSIC RC156 (TUBIGAN 12) DWSR</option>
+                <option value="NSIC RC178H (MESTISO 14)">NSIC RC178H (MESTISO 14)</option>
+                <option value="NSIC RC216 (TUBIGAN 17) DWSR">NSIC RC216 (TUBIGAN 17) DWSR</option>
+                <option value="PSB RC4 (MOLAWIN)">PSB RC4 (MOLAWIN)</option>
+                <option value="NSIC RC142 (TUBIGAN 7) DWSR">NSIC RC142 (TUBIGAN 7) DWSR</option>
+                <option value="NSIC RC198H (MESTISO 17)">NSIC RC198H (MESTISO 17)</option>
+                <option value="NSIC RC114H (MESTISO 2)">NSIC RC114H (MESTISO 2)</option>
+                <option value="NSIC RC116H (MESTISO 3)">NSIC RC116H (MESTISO 3)</option>
+                <option value="NSIC RC138 (TUBIGAN 5) DWSR">NSIC RC138 (TUBIGAN 5) DWSR</option>
+                <option value="NSIC RC164H (MESTISO 9) RIZALINA">NSIC RC164H (MESTISO 9) RIZALINA</option>
+                <option value="NSIC RC192 (SAHOD ULAN 1)">NSIC RC192 (SAHOD ULAN 1)</option>
+                <option value="NSIC RC224 (TUBIGAN 18) DWSR">NSIC RC224 (TUBIGAN 18) DWSR</option>
+                <option value="PSB RC10 (PAGSANJAN)">PSB RC10 (PAGSANJAN)</option>
+                <option value="NSIC RC142 (TUBIGAN 7) TPR">NSIC RC142 (TUBIGAN 7) TPR</option>
+                <option value="NSIC RC198H (MESTISO 17) TPR">NSIC RC198H (MESTISO 17) TPR</option>
+                <option value="NSIC RC114H (MESTISO 2) TPR">NSIC RC114H (MESTISO 2) TPR</option>
+                <option value="NSIC RC116H (MESTISO 3) TPR">NSIC RC116H (MESTISO 3) TPR</option>
+                <option value="NSIC RC138 (TUBIGAN 5) TPR">NSIC RC138 (TUBIGAN 5) TPR</option>
+                <option value="NSIC RC148 (MABANGO 2)">NSIC RC148 (MABANGO 2)</option>
+                <option value="NSIC RC156 (TUBIGAN 12) TPR">NSIC RC156 (TUBIGAN 12) TPR</option>
+                <option value="NSIC RC162H (MESTISO 8)">NSIC RC162H (MESTISO 8)</option>
+                <option value="NSIC RC200H (MESTISO 18)">NSIC RC200H (MESTISO 18)</option>
+                <option value="NSIC RC204H (MESTISO 20)">NSIC RC204H (MESTISO 20)</option>
+                <option value="NSIC RC212 (TUBIGAN 15) DWSR">NSIC RC212 (TUBIGAN 15) DWSR</option>
+                <option value="PSB RC14 (RIO GRANDE)">PSB RC14 (RIO GRANDE)</option>
+                <option value="PSB RC26H (MAGAT)">PSB RC26H (MAGAT)</option>
+                <option value="PSB RC82 (PEÑARANDA)">PSB RC82 (PEÑARANDA)</option>
+                <option value="NSIC 2010 RC226 (TUBIGAN20) TPR">NSIC 2010 RC226 (TUBIGAN20) TPR</option>
+                <option value="NSIC RC142 (TUBIGAN 7) TPR">NSIC RC142 (TUBIGAN 7) TPR</option>
+                <option value="NSIC RC170 (MS 11)">NSIC RC170 (MS 11)</option>
+                <option value="NSIC RC172 (MS 13)">NSIC RC172 (MS 13)</option>
+                <option value="NSIC RC174H (MESTISO 12)">NSIC RC174H (MESTISO 12)</option>
+                <option value="NSIC RC194 (SUBMARINO 1) NORMAL">NSIC RC194 (SUBMARINO 1) NORMAL</option>
+                <option value="NSIC RC216 (TUBIGAN 17) TPR">NSIC RC216 (TUBIGAN 17) TPR</option>
+                <option value="PSB RC32 (JARO)">PSB RC32 (JARO)</option>
+                <option value="PSB RC6 (CARRANGLAN)">PSB RC6 (CARRANGLAN)</option>
+                <option value="PSB RC80 (PASIG)">PSB RC80 (PASIG)</option>
+                <option value="NSIC RC110 (TUBIGAN 1)">NSIC RC110 (TUBIGAN 1)</option>
+                <option value="NSIC RC132H (MESTISO 6)">NSIC RC132H (MESTISO 6)</option>
+                <option value="NSIC RC158 (TUBIGAN 13)">NSIC RC158 (TUBIGAN 13)</option>
+                <option value="NSIC RC168H (MESTISO 11)">NSIC RC168H (MESTISO 11)</option>
+                <option value="NSIC RC176H (MESTISO 13)">NSIC RC176H (MESTISO 13)</option>
+                <option value="NSIC RC182 (SALINAS 8)">NSIC RC182 (SALINAS 8)</option>
+                <option value="NSIC RC190 (UPAO 6)">NSIC RC190 (UPAO 6)</option>
+                <option value="NSIC RC208H (MESTISO 19)">NSIC RC208H (MESTISO 19)</option>
+                <option value="PSB RC2 (PANTABANGAN)">PSB RC2 (PANTABANGAN)</option>
+                <option value="PSB RC56 (BALETE)">PSB RC56 (BALETE)</option>
+                <option value="PSB RC72 (SABANG)">PSB RC72 (SABANG)</option>
+                <option value="PSB RC78 (DINGALAN)">PSB RC78 (DINGALAN)</option>
+                <option value="PSB RC8 (SAN JOSE)">PSB RC8 (SAN JOSE)</option>
+                <option value="NSIC RC100 (KALINGA)">NSIC RC100 (KALINGA)</option>
+                <option value="NSIC RC124H (MESTISO 5)">NSIC RC124H (MESTISO 5)</option>
+                <option value="NSIC RC150 (TUBIGAN 9) TPR">NSIC RC150 (TUBIGAN 9) TPR</option>
+                <option value="NSIC RC154 (TUBIGAN 11)">NSIC RC154 (TUBIGAN 11)</option>
+                <option value="NSIC RC160 (TUBIGAN 14)">NSIC RC160 (TUBIGAN 14)</option>
+                <option value="NSIC RC166 (TUBIGAN 16)">NSIC RC166 (TUBIGAN 16)</option>
+                <option value="NSIC RC184 (SALINAS 9)">NSIC RC184 (SALINAS 9)</option>
+                <option value="NSIC RC186 (SALINAS 10)">NSIC RC186 (SALINAS 10)</option>
+                <option value="NSIC RC192 (SAHOD ULAN 1) TPR">NSIC RC192 (SAHOD ULAN 1) TPR</option>
+                <option value="PSB RC16 (CANDABA)">PSB RC16 (CANDABA)</option>
+                <option value="PSB RC34 (SAN RAFAEL)">PSB RC34 (SAN RAFAEL)</option>
+                <option value="PSB RC50 (MANGATAREM)">PSB RC50 (MANGATAREM)</option>
+                <option value="PSB RC60 (GERONA)">PSB RC60 (GERONA)</option>
+                <option value="PSB RC66 (PURA)">PSB RC66 (PURA)</option>
+                <option value="PSB RC70 (CAMILING)">PSB RC70 (CAMILING)</option>
+                <option value="PSB RC74 (STA. IGNACIA)">PSB RC74 (STA. IGNACIA)</option>
+                <option value="PSB RC76 (ANAO)">PSB RC76 (ANAO)</option>
+                <option value="PSB RC84 (LA PAZ)">PSB RC84 (LA PAZ)</option>
+                <option value="PSB RC90 (CONCEPCION)">PSB RC90 (CONCEPCION)</option>
+                <option value="PSB RC94 (CABIAO)">PSB RC94 (CABIAO)</option>
+                <option value="PSB RC98 (SAN LEONARDO)">PSB RC98 (SAN LEONARDO)</option>
+                <option value="PSB RC104 (SAN ANTONIO)">PSB RC104 (SAN ANTONIO)</option>
+                <option value="PSB RC108 (SAN ISIDRO)">PSB RC108 (SAN ISIDRO)</option>
+                <option value="PSB RC112 (RIZAL)">PSB RC112 (RIZAL)</option>
+                <option value="PSB RC116 (HERMOSA)">PSB RC116 (HERMOSA)</option>
+                <option value="PSB RC120 (MARILAO)">PSB RC120 (MARILAO)</option>
+                <option value="PSB RC124 (DONA REMEDIOS TRINIDAD)">PSB RC124 (DONA REMEDIOS TRINIDAD)</option>
+                <option value="PSB RC128 (STA. MARIA)">PSB RC128 (STA. MARIA)</option>
+                <option value="PSB RC132 (BOCAUE)">PSB RC132 (BOCAUE)</option>
+                <option value="PSB RC136 (BALIUAG)">PSB RC136 (BALIUAG)</option>
+                <option value="PSB RC140 (ANGAT)">PSB RC140 (ANGAT)</option>
+                <option value="PSB RC144 (SAN MIGUEL)">PSB RC144 (SAN MIGUEL)</option>
+                <option value="PSB RC148 (LICAB)">PSB RC148 (LICAB)</option>
+                <option value="PSB RC152 (PANDI)">PSB RC152 (PANDI)</option>
+                <option value="PSB RC156 (BUSTOS)">PSB RC156 (BUSTOS)</option>
+                <option value="PSB RC160 (CALUMPIT)">PSB RC160 (CALUMPIT)</option>
+                <option value="PSB RC164 (MALOLOS)">PSB RC164 (MALOLOS)</option>
+                <option value="PSB RC168 (PLARIDEL)">PSB RC168 (PLARIDEL)</option>
+                <option value="PSB RC172 (PULILAN)">PSB RC172 (PULILAN)</option>
+                <option value="PSB RC176 (STO. TOMAS)">PSB RC176 (STO. TOMAS)</option>
+                <option value="PSB RC180 (STA. ANA)">PSB RC180 (STA. ANA)</option>
+                <option value="PSB RC184 (ANGONO)">PSB RC184 (ANGONO)</option>
+                <option value="PSB RC188 (TANAY)">PSB RC188 (TANAY)</option>
+                <option value="PSB RC192 (RODRIGUEZ)">PSB RC192 (RODRIGUEZ)</option>
+                <option value="PSB RC196 (SAN MATEO)">PSB RC196 (SAN MATEO)</option>
+                <option value="PSB RC200 (ANTIPOLO)">PSB RC200 (ANTIPOLO)</option>
+                <option value="PSB RC204 (TAYTAY)">PSB RC204 (TAYTAY)</option>
+                <option value="PSB RC208 (CAINTA)">PSB RC208 (CAINTA)</option>
+                <option value="PSB RC212 (TANZA)">PSB RC212 (TANZA)</option>
+                <option value="PSB RC216 (NAIC)">PSB RC216 (NAIC)</option>
+                <option value="PSB RC220 (TRECE MARTIREZ)">PSB RC220 (TRECE MARTIREZ)</option>
+                <option value="PSB RC224 (INDANG)">PSB RC224 (INDANG)</option>
+                <option value="PSB RC228 (TAGAYTAY)">PSB RC228 (TAGAYTAY)</option>
+                <option value="PSB RC232 (ALFONSO)">PSB RC232 (ALFONSO)</option>
+                <option value="PSB RC236 (AMADEO)">PSB RC236 (AMADEO)</option>
+                <option value="PSB RC240 (CARMONA)">PSB RC240 (CARMONA)</option>
+                <option value="PSB RC244 (SILANG)">PSB RC244 (SILANG)</option>
+                <option value="PSB RC248 (GEN. MARIANO ALVAREZ)">PSB RC248 (GEN. MARIANO ALVAREZ)</option>
+                <option value="PSB RC252 (IMUS)">PSB RC252 (IMUS)</option>
+                <option value="PSB RC256 (TANZA)">PSB RC256 (TANZA)</option>
+                <option value="PSB RC260 (KAWIT)">PSB RC260 (KAWIT)</option>
+                <option value="PSB RC264 (ROSARIO)">PSB RC264 (ROSARIO)</option>
+                <option value="PSB RC268 (NIA)">PSB RC268 (NIA)</option>
+                <option value="PSB RC272 (INDANG)">PSB RC272 (INDANG)</option>
+                <option value="PSB RC276 (CAVITE CITY)">PSB RC276 (CAVITE CITY)</option>
+                <option value="PSB RC280 (GEN. TRIAS)">PSB RC280 (GEN. TRIAS)</option>
+                <option value="PSB RC284 (NAIC)">PSB RC284 (NAIC)</option>
+                <option value="PSB RC288 (IMUS)">PSB RC288 (IMUS)</option>
+                <option value="PSB RC292 (BACOOR)">PSB RC292 (BACOOR)</option>
+                <option value="PSB RC296 (CARMONA)">PSB RC296 (CARMONA)</option>
+                <option value="PSB RC300 (GEN. TRIAS)">PSB RC300 (GEN. TRIAS)</option>
+                <option value="PSB RC304 (ROSARIO)">PSB RC304 (ROSARIO)</option>
+                <option value="PSB RC308 (CAVITE CITY)">PSB RC308 (CAVITE CITY)</option>
+                <option value="PSB RC312 (CITY OF TAGAYTAY)">PSB RC312 (CITY OF TAGAYTAY)</option>
+                <option value="PSB RC316 (CITY OF TRECE MARTIREZ)">PSB RC316 (CITY OF TRECE MARTIREZ)</option>
+                <option value="PSB RC320 (CITY OF DASMARINAS)">PSB RC320 (CITY OF DASMARINAS)</option>
+                <option value="PSB RC324 (CITY OF BACOOR)">PSB RC324 (CITY OF BACOOR)</option>
+                <option value="PSB RC328 (CITY OF IMUS)">PSB RC328 (CITY OF IMUS)</option>
+                <option value="PSB RC332 (CITY OF CAVITE)">PSB RC332 (CITY OF CAVITE)</option>
+                <option value="PSB RC336 (ANTONIO)">PSB RC336 (ANTONIO)</option>
+                <option value="PSB RC340 (LEMERY)">PSB RC340 (LEMERY)</option>
+                <option value="PSB RC344 (CALACA)">PSB RC344 (CALACA)</option>
+                <option value="PSB RC348 (BALAYAN)">PSB RC348 (BALAYAN)</option>
+                <option value="PSB RC352 (CALATAGAN)">PSB RC352 (CALATAGAN)</option>
+                <option value="PSB RC356 (LIAN)">PSB RC356 (LIAN)</option>
+                <option value="PSB RC360 (NASUGBU)">PSB RC360 (NASUGBU)</option>
+                <option value="PSB RC364 (BATANGAS CITY)">PSB RC364 (BATANGAS CITY)</option>
+                <option value="PSB RC368 (CITY OF TANAUAN)">PSB RC368 (CITY OF TANAUAN)</option>
+                <option value="PSB RC372 (MALVAR)">PSB RC372 (MALVAR)</option>
+                <option value="PSB RC376 (CITY OF LIPA)">PSB RC376 (CITY OF LIPA)</option>
+                <option value="PSB RC380 (STO. TOMAS)">PSB RC380 (STO. TOMAS)</option>
+                <option value="PSB RC384 (BAYOMBONG)">PSB RC384 (BAYOMBONG)</option>
+                <option value="PSB RC388 (BAMBANG)">PSB RC388 (BAMBANG)</option>
+                <option value="PSB RC392 (ALFONSO CASTANEDA)">PSB RC392 (ALFONSO CASTANEDA)</option>
+                <option value="PSB RC396 (SOLANO)">PSB RC396 (SOLANO)</option>
+                <option value="PSB RC400 (VILLAVERDE)">PSB RC400 (VILLAVERDE)</option>
+                <option value="PSB RC404 (BAYOMBONG)">PSB RC404 (BAYOMBONG)</option>
+                <option value="PSB RC408 (BAMBANG)">PSB RC408 (BAMBANG)</option>
+                <option value="PSB RC412 (ALFONSO CASTANEDA)">PSB RC412 (ALFONSO CASTANEDA)</option>
+                <option value="PSB RC416 (SOLANO)">PSB RC416 (SOLANO)</option>
+                <option value="PSB RC420 (VILLAVERDE)">PSB RC420 (VILLAVERDE)</option>
+                <option value="PSB RC424 (BAYOMBONG)">PSB RC424 (BAYOMBONG)</option>
+                <option value="PSB RC428 (BAMBANG)">PSB RC428 (BAMBANG)</option>
+                <option value="PSB RC432 (ALFONSO CASTANEDA)">PSB RC432 (ALFONSO CASTANEDA)</option>
+                <option value="PSB RC436 (SOLANO)">PSB RC436 (SOLANO)</option>
+                <option value="PSB RC440 (VILLAVERDE)">PSB RC440 (VILLAVERDE)</option>
+                <option value="PSB RC444 (CITY OF ILAGAN)">PSB RC444 (CITY OF ILAGAN)</option>
+                <option value="PSB RC448 (CITY OF CAUAYAN)">PSB RC448 (CITY OF CAUAYAN)</option>
+                <option value="PSB RC452 (CITY OF SANTIAGO)">PSB RC452 (CITY OF SANTIAGO)</option>
+                <option value="PSB RC456 (CITY OF CABARROGUIS)">PSB RC456 (CITY OF CABARROGUIS)</option>
+                <option value="PSB RC460 (MADDELA)">PSB RC460 (MADDELA)</option>
+                <option value="PSB RC464 (DIFFUN)">PSB RC464 (DIFFUN)</option>
+                <option value="PSB RC468 (SAGUDAY)">PSB RC468 (SAGUDAY)</option>
+                <option value="PSB RC472 (AGLIPAY)">PSB RC472 (AGLIPAY)</option>
+                <option value="PSB RC476 (NAGTIPUNAN)">PSB RC476 (NAGTIPUNAN)</option>
+                <option value="PSB RC480 (KASIBU)">PSB RC480 (KASIBU)</option>
+                <option value="PSB RC484 (AURORA)">PSB RC484 (AURORA)</option>
+                <option value="PSB RC488 (MARIA AURORA)">PSB RC488 (MARIA AURORA)</option>
+                <option value="PSB RC492 (BALER)">PSB RC492 (BALER)</option>
+                <option value="PSB RC496 (CITY OF PALAYAN)">PSB RC496 (CITY OF PALAYAN)</option>
+                <option value="PSB RC500 (CITY OF CABANATUAN)">PSB RC500 (CITY OF CABANATUAN)</option>
+                <option value="PSB RC504 (CABANATUAN CITY)">PSB RC504 (CABANATUAN CITY)</option>
+                <option value="PSB RC508 (GAPAN CITY)">PSB RC508 (GAPAN CITY)</option>
+                <option value="PSB RC512 (PALAYAN CITY)">PSB RC512 (PALAYAN CITY)</option>
+                <option value="PSB RC516 (SAN JOSE CITY)">PSB RC516 (SAN JOSE CITY)</option>
+                <option value="PSB RC520 (CABIAO)">PSB RC520 (CABIAO)</option>
+                <option value="PSB RC524 (CUYAPO)">PSB RC524 (CUYAPO)</option>
+                <option value="PSB RC528 (GABALDON)">PSB RC528 (GABALDON)</option>
+                <option value="PSB RC532 (GENERAL MAMERTO NATIVIDAD)">PSB RC532 (GENERAL MAMERTO NATIVIDAD)</option>
+                <option value="PSB RC536 (LICAB)">PSB RC536 (LICAB)</option>
+                <option value="PSB RC540 (LLANERA)">PSB RC540 (LLANERA)</option>
+                <option value="PSB RC544 (NAMPICUAN)">PSB RC544 (NAMPICUAN)</option>
+                <option value="PSB RC548 (PANTABANGAN)">PSB RC548 (PANTABANGAN)</option>
+                <option value="PSB RC552 (PEÑARANDA)">PSB RC552 (PEÑARANDA)</option>
+                <option value="PSB RC556 (QUEZON)">PSB RC556 (QUEZON)</option>
+                <option value="PSB RC560 (RIZAL)">PSB RC560 (RIZAL)</option>
+                <option value="PSB RC564 (SAN ANTONIO)">PSB RC564 (SAN ANTONIO)</option>
+                <option value="PSB RC568 (SAN ISIDRO)">PSB RC568 (SAN ISIDRO)</option>
+                <option value="PSB RC572 (SAN LEONARDO)">PSB RC572 (SAN LEONARDO)</option>
+                <option value="PSB RC576 (SANTA ROSA)">PSB RC576 (SANTA ROSA)</option>
+                <option value="PSB RC580 (SANTO DOMINGO)">PSB RC580 (SANTO DOMINGO)</option>
+                <option value="PSB RC584 (SCIENCE CITY OF MUÑOZ)">PSB RC584 (SCIENCE CITY OF MUÑOZ)</option>
+                <option value="PSB RC588 (TALAVERA)">PSB RC588 (TALAVERA)</option>
+                <option value="PSB RC592 (TALUGTUG)">PSB RC592 (TALUGTUG)</option>
+                <option value="PSB RC596 (ZARAGOZA)">PSB RC596 (ZARAGOZA)</option>
+                <option value="PSB RC600 (CITY OF CABANATUAN)">PSB RC600 (CITY OF CABANATUAN)</option>
+                <option value="PSB RC604 (CABANATUAN CITY)">PSB RC604 (CABANATUAN CITY)</option>
+                <option value="PSB RC608 (GAPAN CITY)">PSB RC608 (GAPAN CITY)</option>
+                <option value="PSB RC612 (PALAYAN CITY)">PSB RC612 (PALAYAN CITY)</option>
+                <option value="PSB RC616 (SAN JOSE CITY)">PSB RC616 (SAN JOSE CITY)</option>
+                <option value="PSB RC620 (CABIAO)">PSB RC620 (CABIAO)</option>
+                <option value="PSB RC624 (CUYAPO)">PSB RC624 (CUYAPO)</option>
+                <option value="PSB RC628 (GABALDON)">PSB RC628 (GABALDON)</option>
+                <option value="PSB RC632 (GENERAL MAMERTO NATIVIDAD)">PSB RC632 (GENERAL MAMERTO NATIVIDAD)</option>
+                <option value="PSB RC636 (LICAB)">PSB RC636 (LICAB)</option>
+                <option value="PSB RC640 (LLANERA)">PSB RC640 (LLANERA)</option>
+                <option value="PSB RC644 (NAMPICUAN)">PSB RC644 (NAMPICUAN)</option>
+                <option value="PSB RC648 (PANTABANGAN)">PSB RC648 (PANTABANGAN)</option>
+                <option value="PSB RC652 (PEÑARANDA)">PSB RC652 (PEÑARANDA)</option>
+                <option value="PSB RC656 (QUEZON)">PSB RC656 (QUEZON)</option>
+                <option value="PSB RC660 (RIZAL)">PSB RC660 (RIZAL)</option>
+                <option value="PSB RC664 (SAN ANTONIO)">PSB RC664 (SAN ANTONIO)</option>
+                <option value="PSB RC668 (SAN ISIDRO)">PSB RC668 (SAN ISIDRO)</option>
+                <option value="PSB RC672 (SAN LEONARDO)">PSB RC672 (SAN LEONARDO)</option>
+                <option value="PSB RC676 (SANTA ROSA)">PSB RC676 (SANTA ROSA)</option>
+                <option value="PSB RC680 (SANTO DOMINGO)">PSB RC680 (SANTO DOMINGO)</option>
+                <option value="PSB RC684 (SCIENCE CITY OF MUÑOZ)">PSB RC684 (SCIENCE CITY OF MUÑOZ)</option>
+                <option value="PSB RC688 (TALAVERA)">PSB RC688 (TALAVERA)</option>
+                <option value="PSB RC692 (TALUGTUG)">PSB RC692 (TALUGTUG)</option>
+                <option value="PSB RC696 (ZARAGOZA)">PSB RC696 (ZARAGOZA)</option>
+                <option value="PSB RC700 (CITY OF CABANATUAN)">PSB RC700 (CITY OF CABANATUAN)</option>
+                <option value="PSB RC704 (CABANATUAN CITY)">PSB RC704 (CABANATUAN CITY)</option>
+                <option value="PSB RC708 (GAPAN CITY)">PSB RC708 (GAPAN CITY)</option>
+                <option value="PSB RC712 (PALAYAN CITY)">PSB RC712 (PALAYAN CITY)</option>
+                <option value="PSB RC716 (SAN JOSE CITY)">PSB RC716 (SAN JOSE CITY)</option>
+                <option value="PSB RC720 (CABIAO)">PSB RC720 (CABIAO)</option>
+                <option value="PSB RC724 (CUYAPO)">PSB RC724 (CUYAPO)</option>
+                <option value="PSB RC728 (GABALDON)">PSB RC728 (GABALDON)</option>
+                <option value="PSB RC732 (GENERAL MAMERTO NATIVIDAD)">PSB RC732 (GENERAL MAMERTO NATIVIDAD)</option>
+                <option value="PSB RC736 (LICAB)">PSB RC736 (LICAB)</option>
+                <option value="PSB RC740 (LLANERA)">PSB RC740 (LLANERA)</option>
+                <option value="PSB RC744 (NAMPICUAN)">PSB RC744 (NAMPICUAN)</option>
+                <option value="PSB RC748 (PANTABANGAN)">PSB RC748 (PANTABANGAN)</option>
+                <option value="PSB RC752 (PEÑARANDA)">PSB RC752 (PEÑARANDA)</option>
+                <option value="PSB RC756 (QUEZON)">PSB RC756 (QUEZON)</option>
+                <option value="PSB RC760 (RIZAL)">PSB RC760 (RIZAL)</option>
+                <option value="PSB RC764 (SAN ANTONIO)">PSB RC764 (SAN ANTONIO)</option>
+                <option value="PSB RC768 (SAN ISIDRO)">PSB RC768 (SAN ISIDRO)</option>
+                <option value="PSB RC772 (SAN LEONARDO)">PSB RC772 (SAN LEONARDO)</option>
+                <option value="PSB RC776 (SANTA ROSA)">PSB RC776 (SANTA ROSA)</option>
+                <option value="PSB RC780 (SANTO DOMINGO)">PSB RC780 (SANTO DOMINGO)</option>
+                <option value="PSB RC784 (SCIENCE CITY OF MUÑOZ)">PSB RC784 (SCIENCE CITY OF MUÑOZ)</option>
+                <option value="PSB RC788 (TALAVERA)">PSB RC788 (TALAVERA)</option>
+                <option value="PSB RC792 (TALUGTUG)">PSB RC792 (TALUGTUG)</option>
+                <option value="PSB RC796 (ZARAGOZA)">PSB RC796 (ZARAGOZA)</option>
+                <option value="PSB RC800 (CITY OF CABANATUAN)">PSB RC800 (CITY OF CABANATUAN)</option>
+                <option value="PSB RC804 (CABANATUAN CITY)">PSB RC804 (CABANATUAN CITY)</option>
+                <option value="PSB RC808 (GAPAN CITY)">PSB RC808 (GAPAN CITY)</option>
+                <option value="PSB RC812 (PALAYAN CITY)">PSB RC812 (PALAYAN CITY)</option>
+                <option value="PSB RC816 (SAN JOSE CITY)">PSB RC816 (SAN JOSE CITY)</option>
+                <option value="PSB RC820 (CABIAO)">PSB RC820 (CABIAO)</option>
+                <option value="PSB RC824 (CUYAPO)">PSB RC824 (CUYAPO)</option>
+                <option value="PSB RC828 (GABALDON)">PSB RC828 (GABALDON)</option>
+                <option value="PSB RC832 (GENERAL MAMERTO NATIVIDAD)">PSB RC832 (GENERAL MAMERTO NATIVIDAD)</option>
+                <option value="PSB RC836 (LICAB)">PSB RC836 (LICAB)</option>
+                <option value="PSB RC840 (LLANERA)">PSB RC840 (LLANERA)</option>
+                <option value="PSB RC844 (NAMPICUAN)">PSB RC844 (NAMPICUAN)</option>
+                <option value="PSB RC848 (PANTABANGAN)">PSB RC848 (PANTABANGAN)</option>
+                <option value="PSB RC852 (PEÑARANDA)">PSB RC852 (PEÑARANDA)</option>
+                <option value="PSB RC856 (QUEZON)">PSB RC856 (QUEZON)</option>
+                <option value="PSB RC860 (RIZAL)">PSB RC860 (RIZAL)</option>
+                <option value="PSB RC864 (SAN ANTONIO)">PSB RC864 (SAN ANTONIO)</option>
+                <option value="PSB RC868 (SAN ISIDRO)">PSB RC868 (SAN ISIDRO)</option>
+                <option value="PSB RC872 (SAN LEONARDO)">PSB RC872 (SAN LEONARDO)</option>
+                <option value="PSB RC876 (SANTA ROSA)">PSB RC876 (SANTA ROSA)</option>
+                <option value="PSB RC880 (SANTO DOMINGO)">PSB RC880 (SANTO DOMINGO)</option>
+                <option value="PSB RC884 (SCIENCE CITY OF MUÑOZ)">PSB RC884 (SCIENCE CITY OF MUÑOZ)</option>
+                <option value="PSB RC888 (TALAVERA)">PSB RC888 (TALAVERA)</option>
+                <option value="PSB RC892 (TALUGTUG)">PSB RC892 (TALUGTUG)</option>
+                <option value="PSB RC896 (ZARAGOZA)">PSB RC896 (ZARAGOZA)</option>
+                <option value="PSB RC900 (CITY OF CABANATUAN)">PSB RC900 (CITY OF CABANATUAN)</option>
+                <option value="PSB RC904 (CABANATUAN CITY)">PSB RC904 (CABANATUAN CITY)</option>
+                <option value="PSB RC908 (GAPAN CITY)">PSB RC908 (GAPAN CITY)</option>
+                <option value="PSB RC912 (PALAYAN CITY)">PSB RC912 (PALAYAN CITY)</option>
+                <option value="PSB RC916 (SAN JOSE CITY)">PSB RC916 (SAN JOSE CITY)</option>
+                <option value="PSB RC920 (CABIAO)">PSB RC920 (CABIAO)</option>
+                <option value="PSB RC924 (CUYAPO)">PSB RC924 (CUYAPO)</option>
+                <option value="PSB RC928 (GABALDON)">PSB RC928 (GABALDON)</option>
+                <option value="PSB RC932 (GENERAL MAMERTO NATIVIDAD)">PSB RC932 (GENERAL MAMERTO NATIVIDAD)</option>
+                <option value="PSB RC936 (LICAB)">PSB RC936 (LICAB)</option>
+                <option value="PSB RC940 (LLANERA)">PSB RC940 (LLANERA)</option>
+                <option value="PSB RC944 (NAMPICUAN)">PSB RC944 (NAMPICUAN)</option>
+                <option value="PSB RC948 (PANTABANGAN)">PSB RC948 (PANTABANGAN)</option>
+                <option value="PSB RC952 (PEÑARANDA)">PSB RC952 (PEÑARANDA)</option>
+                <option value="PSB RC956 (QUEZON)">PSB RC956 (QUEZON)</option>
+                <option value="PSB RC960 (RIZAL)">PSB RC960 (RIZAL)</option>
+                <option value="PSB RC964 (SAN ANTONIO)">PSB RC964 (SAN ANTONIO)</option>
+                <option value="PSB RC968 (SAN ISIDRO)">PSB RC968 (SAN ISIDRO)</option>
+                <option value="PSB RC972 (SAN LEONARDO)">PSB RC972 (SAN LEONARDO)</option>
+                <option value="PSB RC976 (SANTA ROSA)">PSB RC976 (SANTA ROSA)</option>
+                <option value="PSB RC980 (SANTO DOMINGO)">PSB RC980 (SANTO DOMINGO)</option>
+                <option value="PSB RC984 (SCIENCE CITY OF MUÑOZ)">PSB RC984 (SCIENCE CITY OF MUÑOZ)</option>
+                <option value="PSB RC988 (TALAVERA)">PSB RC988 (TALAVERA)</option>
+                <option value="PSB RC992 (TALUGTUG)">PSB RC992 (TALUGTUG)</option>
+                <option value="PSB RC996 (ZARAGOZA)">PSB RC996 (ZARAGOZA)</option>
+    </select>
+
+    <div class="mb-3">
+      <label for="remarks" class="form-label">Remarks :</label>
+      <textarea id="remarks" name="remarks" rows="3"></textarea>
+    </div>
+
+    <div>
+      <ion-grid>
+        <ion-row class="ion-justify-content-start">
+          <ion-col size="4">
+            <label for="conformedBy">Conformed by:</label>
+            <input class="i" type="text" id="conformedBy" name="conformedBy" required>
+            <p class="in">Insured</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-end">
+          <ion-col size="4">
+            <label for="preparedBy" class="pre">Prepared by:</label>
+            <input class="u" type="text" id="preparedBy" name="preparedBy" required>
+            <p class="ui">UI/IA</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+    <button class="bt" type="submit">Submit</button>
+  </form>
+  
+</ion-content>

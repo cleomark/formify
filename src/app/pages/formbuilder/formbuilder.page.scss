@@ -1,0 +1,104 @@
+.page {
+    font-family:"Calibri", sans-serif !important;
+    letter-spacing: -1px !important;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+::-webkit-scrollbar{
+    width: 7px;
+  }
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgba(12, 92, 212, 0.445);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(0, 57, 143, 0.671);
+
+}
+
+.selected:not(.page){
+    border: 2px dotted rgb(0, 68, 255);
+    background-color: rgb(209, 247, 255);
+}
+
+input {
+    background-color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+    outline: none;
+}
+input:focus{
+    outline: none;
+}
+
+.no-grid *:not(table):not(td):not(td div):not(.border-black):not(.bg-black){
+    border:none;
+    background-color: white;
+    min-height: auto;
+}
+.vertical-options{
+    align-items:start;
+}
+
+i{
+    user-select: none;
+    pointer-events: none;
+}
+
+.vertical-options .options{
+    flex-direction: column;
+}
+
+.vertical-options .options > div{
+    margin-top: 0.25rem;
+}
+
+.indented.label{
+    padding-left: 2.8rem;
+}
+
+.poppins{
+    font-size: 1em;
+}
+
+.poppins-sb{
+    font-size: 1em;
+}
+
+.drag-hover:not(.holding){
+    background-color: rgb(255, 248, 182);
+    border-color: orange;
+}
+
+.holding{
+    background-color: rgb(243, 243, 243);
+    border-color: gray;
+    opacity: 0.3;
+}
+
+
+
+@media screen and (max-height:1366px) {
+    .right-side *{
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right:0px;
+        font-size: 15px;
+    }
+
+    .right-side{
+        padding: 0;
+    }
+    .w-2\/3{
+        width: 100%;
+    }
+}
+
+table{
+    margin-bottom: 0.25rem;
+}
+//lect-none cursor-pointer w-full  hover:bg-gray-50 py-1
+        // border-dotted border-2 border-sky-200 hover:border-blue-600 flex rounded justify-center items-center text-black

@@ -1,0 +1,426 @@
+<div class="flex w-full h-full">
+  <!-- SIDE BAR -->
+  <div class="w-[20%] bg-white">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="w-full h-full bg-gray-100">
+    <!-- HEADER -->
+    <div class="h-[6%] flex justify-between ">
+      <div class="text-gray-900 h-full w-60 flex items-center justify-center font-bold poppins-sb text-lg select-none">Create New Form</div>
+      <div class="flex">
+        <div *ngIf="!newform" class="flex justify-center p-1 items-center h-full">
+          <button (click)="deleteForm()" class="w-full h-full bg-red-500 hover:bg-red-400 rounded-lg flex place-content-center items-center px-3" >
+            <i class='text-white-600 bx bx-trash text-xl' ></i><span class="ml-2 text-white poppins">Delete Form</span>
+          </button>
+        </div>
+        <div class="flex justify-center p-1 items-center h-full">
+          <button (click)="toggleGrid()" class="w-full h-full hover:bg-gray-200 rounded-lg flex place-content-center items-center px-3" [ngClass]="{'bg-lime-500': gridEnabled, 'hover:bg-lime-400': gridEnabled}">
+            <i class='text-blue-600 bx bx-grid text-xl'  [ngClass]="{'text-white': gridEnabled}"></i><span class="ml-2 text-gray-900 poppins"  [ngClass]="{'text-white': gridEnabled}">Layout View</span>
+          </button>
+        </div>
+        <div class="h-full py-2"><div class="h-full w-[1px] bg-gray-300 rounded-sm"></div></div>
+        <!-- <div class="flex justify-center p-1 items-center h-full">
+          <button (click)="formView()" class="w-full h-full hover:bg-gray-200 rounded-lg flex place-content-center items-center px-6">
+            <i class=' text-blue-600 bx bxs-show text-xl'></i><span class="ml-3 text-gray-900 poppins">Form View</span>
+          </button>
+        </div> -->
+        <div class="h-full w-40 p-1 poppins">
+          <button (click)="publish()" class="rounded-lg w-full h-full hover:bg-blue-500 bg-blue-600 text-white">
+           {{(newform) ? 'Publish Form':'Update Form'}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- BODY -->
+    <div class="flex w-full h-full">
+      
+      <!-- LEFT -->
+      <div id="board" class="w-[75%] min-w-[850px] h-[88%] ">
+        <div class="h-[5%] text-gray-900 flex items-center pb-3 shadow-sm">
+          <p class="ml-20"><span class="poppins align-middle cursor-pointer select-none ">Manage Forms</span><i class='ml-2 bx bx-chevrons-right text-gray-400 text-xl align-middle select-none'></i><span class="select-none ml-2 text-blue-800  align-middle poppins">Create New Form</span></p>
+        </div>
+        <div class="w-full h-full justify-center flex overflow-y-auto ">
+
+            <div id="page1" (dragenter)="dragEnter($event)"  (dragleave)="dragLeave($event)" (dragover)="allowDrop($event)" (drop)="drop($event)"  (click)="select($event.target);(isPage()) ? switchTab(0) : null" class="selection will-change-transform container page mt-5 mb-10 w-[816px] h-[1344px] border-dotted border-2  hover:border-blue-300 bg-white shadow-lg hover:shadow-2xl rounded px-[2%] py-[4%] overflow-hidden"></div>
+          
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right-side w-[25%] min-w-[260px] h-[92%] pb-4 p pl-1 pr-5 select-none">
+        <div class="w-full h-full bg-white overflow-hidden rounded-xl border-sky-20 border-dotted border-2 hover:border-blue-500 shadow-lg hover:shadow-2xl px-1">
+          <!-- Side Toolbar -->
+          <div class="flex w-full h-[7%] shadow-sm">
+              <div 
+                [ngClass]="{'!text-lime-600 ':tab == 0}"
+                (click)="switchTab(0); selectPage()"
+                class="flex-1 hover:bg-gray-50 cursor-pointer text-gray-400 active:text-lime-600 flex justify-center items-center poppins-sb select-none">Content</div>
+              <div 
+                (click)="switchTab(1)"
+                [ngClass]="{'!text-lime-600 ':tab == 1}"
+                class="flex-1 hover:bg-gray-50 cursor-pointer text-gray-400 active:text-lime-600 flex justify-center items-center poppins-sb select-none">Settings</div>
+          </div>
+          <!-- Side Content -->
+          <div *ngIf="tab==0" class="w-full h-full p-5">
+            <!-- Tip -->
+            <div class="poppins-sb text-gray-900 text-center mb-5"> Click an element to add it to your form</div>
+            <div class="h-[85%] w-full bg-gray-50 overflow-y-auto p-3  rounded-lg">
+              <ng-container  *ngFor="let tool of toolbarItems">
+                <div *ngIf="tool.name != ''" class="w-full h-[7%] py-1 px-1">
+                  <button (click)="tool.function()" class="w-full h-full hover:bg-gray-200 rounded-lg flex place-content-start items-center text-gray-500"
+                    [ngClass]="{'!text-gray-400': !currentHas('farmtable') && toolkey(tool.name) == 'farmtableentry'}"
+                  >
+                    <i class='ml-5 {{tool.icon}} text-lg'></i><span class="ml-5 poppins-sb">{{tool.name}}</span>
+                  </button>
+                </div>
+                <div *ngIf="tool.name == ''" class="h-0.5 w-full px-3 "> <div class="w-full h-full rounded bg-gray-300"></div></div>
+              </ng-container>
+            </div>
+          </div>
+          <!-- Side Settings -->
+          <div *ngIf="tab==1" class="w-full h-full px-5 py-3">
+            <!-- Tip -->
+            <div class="poppins-sb text-gray-900 text-center mb-5">Tap an element and modify it's content.</div>
+            <div class="w-full overflow-y-auto max-h-[83%] p-4  bg-gray-100 rounded-lg text-black" [ngClass]="{'bg-white':isPage()}">
+                <!-- Text Settings -->
+                <div *ngIf="currentHas('text')">
+                  <!-- Title -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins-sb text-gray-400">Text Settings</div>
+                     <!-- Delete -->
+                     <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                      <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                  </div>
+                  </div>
+                  <!-- Content -->
+                  <div class="flex items-center">
+                    <div class="poppins-sb">Content: </div>
+                    <input [value]="contentField" type="text" (keyup)="updateText($event)" placeholder="Enter Text" class="ml-2 rounded-md w-full min-h-10 border-solid border-2 border-gray-300 focus:border-lime-600">
+                  </div>
+                  <!-- Font Style -->
+                  <div class="flex items-center h-10 mt-2 poppins-sb ">
+                    <div class="mr-2">Font Style: </div>
+                    <div  class="flex-1 h-full p-1"><button (click)="toggleStyle('font-bold')" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('font-bold')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md font-bold hover:bg-blue-500 select-none">B</button></div>
+                    <div   class="flex-1 h-full p-1"><button (click)="toggleStyle('italic')" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('italic')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md italic hover:bg-blue-500 select-none">I</button></div>
+                    <div   class="flex-1 h-full p-1"><button  (click)="toggleStyle('underline')" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('underline')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md underline  hover:bg-blue-500 select-none">U</button></div>
+                  </div>
+                  <!-- Alignment -->
+                  <div class="flex items-center h-10 mt-2 poppins-sb ">
+                    <div class="mr-2">Alignment: </div>
+                    <div  class="flex-1 h-full p-1"><button (click)="selectStyle(['justify-start', 'justify-center', 'justify-end'], 0)" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('justify-start')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md font-bold items-center flex justify-center hover:bg-blue-500 select-none"><i class='bx bx-align-left pointer-events-none' ></i></button></div>
+                    <div   class="flex-1 h-full p-1"><button (click)="selectStyle(['justify-start', 'justify-center', 'justify-end'], 1)" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('justify-center')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md italic items-center flex justify-center hover:bg-blue-500 select-none"><i class='bx bx-align-middle pointer-events-none' ></i></button></div>
+                    <div   class="flex-1 h-full p-1"><button  (click)="selectStyle(['justify-start', 'justify-center', 'justify-end'], 2)" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('justify-end')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md underline items-center flex justify-center  hover:bg-blue-500 select-none"><i class='bx bx-align-right pointer-events-none' ></i></button></div>
+                  </div>
+            
+                </div>
+
+                <!-- Text Field Settings -->
+                <div *ngIf="currentHas('textfield')">
+                  <!-- Title -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins-sb text-gray-400">Text Field Settings</div>
+                     <!-- Delete -->
+                     <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                      <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                  </div>
+                  </div>
+                  <!-- Label -->
+                  <div class="flex items-center">
+                    <div class="poppins-sb">Label: </div>
+                    <input [value]="contentField" type="text" (keyup)="updateText($event)" placeholder="Enter Text Input Label" class="ml-2 rounded-md w-full min-h-10 border-solid border-2 border-gray-300 focus:border-lime-600">
+                  </div>
+                  <!-- Font Style Format -->
+                  <div class="flex items-center h-10 mt-2 poppins-sb ">
+                    <div class="mr-2">Font Style: </div>
+                    <div  class="flex-1 h-full p-1"><button (click)="toggleStyle('font-bold')" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('font-bold')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md font-bold hover:bg-blue-500 select-none">B</button></div>
+                    <div   class="flex-1 h-full p-1"><button (click)="toggleStyle('italic')" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('italic')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md italic hover:bg-blue-500 select-none">I</button></div>
+                    <div   class="flex-1 h-full p-1"><button  (click)="toggleStyle('underline')" 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('underline')}"
+                      class="bg-blue-600 text-white w-full h-full rounded-md underline  hover:bg-blue-500 select-none">U</button></div>
+                  </div>
+                  <!-- Text Input Format -->
+                  <div class="flex items-center h-10 mt-2 poppins-sb ">
+                    <div class="mr-2">Format: </div>
+                    <div   class="flex-1 h-full p-1 poppins"><button 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('flex-row')}"
+                      (click)="selectStyle(['flex-row','flex-col-reverse'], 0)" class="bg-blue-600 text-white w-full h-full rounded-md hover:bg-blue-500 select-none">Left</button></div>
+                    <div  class="flex-1 h-full p-1 poppins"><button 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('flex-col-reverse')}"
+                      (click)="selectStyle(['flex-row','flex-col-reverse'], 1)" class="bg-blue-600 text-white w-full h-full rounded-md  hover:bg-blue-500 select-none">Bottom</button></div>
+                  </div>
+                
+                </div>
+
+                <!-- Checkbox Settings -->
+                <div *ngIf="currentHas('checkbox')">
+                  <!-- Title -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins-sb text-gray-400">Checkbox Settings</div>
+                     <!-- Delete -->
+                    <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                        <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                    </div>
+                  </div>
+                  <!-- Label -->
+                  <div class="flex items-center">
+                    <div class="poppins-sb">Label: </div>
+                    <input [value]="contentField" type="text" (keyup)="updateText($event)" placeholder="Enter Checkbox Label" class="ml-2 rounded-md w-full min-h-10 border-solid border-2 border-gray-300 focus:border-lime-600">
+                  </div>
+                  <!-- Font Style Format -->
+                  <div class="flex items-center h-10 mt-2 poppins-sb ">
+                    <div class="mr-2">Font Style: </div>
+                    <div  class="flex-1 h-full p-1"><button
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('font-bold')}"
+                      (click)="toggleStyle('font-bold')" class="bg-blue-600 text-white w-full h-full rounded-md font-bold hover:bg-blue-500 select-none">B</button></div>
+                    <div   class="flex-1 h-full p-1"><button 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('italic')}"
+                      (click)="toggleStyle('italic')" class="bg-blue-600 text-white w-full h-full rounded-md italic hover:bg-blue-500 select-none">I</button></div>
+                    <div   class="flex-1 h-full p-1"><button  
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('underline')}"
+                      (click)="toggleStyle('underline')" class="bg-blue-600 text-white w-full h-full rounded-md underline  hover:bg-blue-500 select-none">U</button></div>
+                  </div>
+                  <!-- Text Input Format -->
+                  <div class="flex items-center h-10 mt-2 poppins-sb ">
+                    <div class="mr-2">Format: </div>
+                    <div   class="flex-1 h-full p-1 poppins"><button
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('horizontal-options')}"
+                      (click)="selectStyle(['vertical-options','horizontal-options'], 1)" class="bg-blue-600 text-white w-full h-full rounded-md hover:bg-blue-500 select-none">Horizontal</button></div>
+                    <div  class="flex-1 h-full p-1 poppins"><button 
+                      [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('vertical-options')}"
+                      (click)="selectStyle(['vertical-options','horizontal-options'], 0)" class="bg-blue-600 text-white w-full h-full rounded-md  hover:bg-blue-500 select-none">Vertical</button></div>
+                  </div>
+                  <!-- Options -->
+                  <div class="flex items-center justify-center flex-col mt-1 poppins">
+                    <div *ngIf="options.size <= 0"  >Click 'Add Option' to add entries</div>
+                    <ng-container  *ngFor="let option of options|keyvalue; let i = index">
+                      <div class="flex items-center mt-2">
+                        <div class="poppins-sb whitespace-nowrap">Option {{i+1}}:</div>
+                        <input [value]="option.value.text" type="text" (keyup)="updateOption(option.value.id,$event)" placeholder="Enter Checkbox Label" class="ml-2 rounded-md w-full min-h-10 border-solid border-2 border-gray-300 focus:border-lime-600">
+                        <div   class="w-1/4 h-full flex justify-center p-1"><button (click)="deleteOption(option.value.id)" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">X</button></div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  
+                 <!-- Add Option -->
+                  <div class="flex items-center mt-2 h-10 justify-end poppins ">
+                    <div   class="h-full p-1"><button (click)="addOption()" class="bg-blue-600 text-white w-full h-full rounded-md  hover:bg-blue-500"><span class="px-3">Add Option</span></button></div>
+                  </div>
+                </div>
+
+                <!-- Group Settings -->
+                <div *ngIf="currentHas('group')">
+                  <!-- Title -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins-sb text-gray-400">Group Settings</div>
+                     <!-- Delete -->
+                    <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                        <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                    </div>
+                  </div>
+                  <!-- Info -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins text-gray-400 text-center">Click Content to add more contents in these field.</div>
+                  </div>
+                </div>
+
+                <!-- Column Settings -->
+                <div *ngIf="currentHas('column') && !currentIsChild()">
+                  <!-- Title -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins-sb text-gray-400">Column Settings</div>
+                     <!-- Delete -->
+                    <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                        <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                    </div>
+                  </div>
+                  <!-- Info -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins text-gray-400 text-center">Click Content to add more contents in these field.</div>
+                  </div>
+                  <!-- Field Count -->
+                  <div class="flex items-center  mt-2 poppins-sb ">
+                    <div class="mr-2 whitespace-nowrap h-full flex items-center">Field Count: </div>
+                      <div class="flex w-full h-10">
+                        <div   class="flex-1 h-full p-1 poppins"><button (click)="removeField()" class=" text-lg text-gray-500 w-full h-full rounded-md hover:bg-gray-200 select-none"><i class='bx bx-chevron-left' ></i></button></div>
+                        <div class="flex-2 w-2/4 text-lime-600 justify-center h-full  items-center flex poppins-sb"> {{fieldCount}} </div>
+                        <div  class="flex-1 h-full p-1 poppins"><button (click)="addField()"  class="text-lg text-gray-500 w-full h-full rounded-md  hover:bg-gray-200 select-none"><i class='bx bx-chevron-right' ></i></button></div>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- Column Field Settings -->
+                <div *ngIf="currentHas('column') && currentIsChild()">
+                  <!-- Title -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins-sb text-gray-400">Column Field Settings</div>
+                  </div>
+                  <!-- Info -->
+                  <div  class="flex items-center justify-center mb-2">
+                    <div class="poppins text-gray-400 text-center">Click Content to add more contents in these field.</div>
+                  </div>
+                    <!-- Alignment -->
+                    <div class="flex items-center h-10 mt-2 poppins-sb ">
+                      <div class="mr-2">Alignment: </div>
+                      <div  class="flex-1 h-full p-1"><button
+                        [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('justify-start')}"
+                        (click)="selectStyle(['justify-start','justify-center','justify-end'], 0)" class="bg-blue-600 text-white w-full h-full rounded-md font-bold items-center flex justify-center hover:bg-blue-500 select-none"><i class='bx bx-arrow-to-top' ></i></button></div>
+                      <div   class="flex-1 h-full p-1"><button
+                        [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('justify-center')}"
+                        (click)="selectStyle(['justify-start','justify-center','justify-end'], 1)" class="bg-blue-600  text-white w-full h-full rounded-md italic items-center flex justify-center hover:bg-blue-500 select-none"><i class='bx bx-vertical-center'></i></button></div>
+                      <div   class="flex-1 h-full p-1"><button  
+                        [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('justify-end')}"
+                        (click)="selectStyle(['justify-start','justify-center','justify-end'], 2)" class="bg-blue-600 text-white w-full h-full rounded-md underline items-center flex justify-center  hover:bg-blue-500 select-none"><i class='bx bx-arrow-to-bottom' ></i></button></div>
+                    </div>
+                </div>
+
+                  <!-- Row Settings -->
+                  <div *ngIf="currentHas('row') && !currentIsChild()">
+                    <!-- Title -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins-sb text-gray-400">Row Settings</div>
+                       <!-- Delete -->
+                      <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                          <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                      </div>
+                    </div>
+                    <!-- Info -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins text-gray-400 text-center">Click Content to add more contents in these field.</div>
+                    </div>
+                    <!-- Field Count -->
+                    <div class="flex items-center  mt-2 poppins-sb ">
+                      <div class="mr-2 whitespace-nowrap h-full flex items-center">Field Count: </div>
+                        <div class="flex w-full h-10">
+                          <div   class="flex-1 h-full p-1 poppins"><button (click)="removeField()" class=" text-lg text-gray-500 w-full h-full rounded-md hover:bg-gray-200 select-none"><i class='bx bx-chevron-left' ></i></button></div>
+                          <div class="flex-2 w-2/4 text-lime-600 justify-center h-full  items-center flex poppins-sb"> {{fieldCount}} </div>
+                          <div  class="flex-1 h-full p-1 poppins"><button (click)="addField()"  class="text-lg text-gray-500 w-full h-full rounded-md  hover:bg-gray-200 select-none"><i class='bx bx-chevron-right' ></i></button></div>
+                        </div>
+                    </div>
+                  </div>
+  
+                  <!-- Row Field Settings -->
+                  <div *ngIf="currentHas('row') && currentIsChild()">
+                    <!-- Title -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins-sb text-gray-400">Row Field Settings</div>
+                    </div>
+                    <!-- Info -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins text-gray-400 text-center">Click Content to add more contents in these field.</div>
+                    </div>
+                  </div>
+
+                   <!-- Farm Table Settings -->
+                   <div *ngIf="currentHas('farmtable') && !currentIsChild()">
+                    <!-- Title -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins-sb text-gray-400">Farm Table Settings</div>
+                      <!-- Delete -->
+                      <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                          <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                      </div>
+                    </div>
+                      <!-- Info -->
+                      <div  class="flex items-center justify-center mb-2">
+                        <div class="poppins text-gray-400 text-center">Click on a table entry to modify content.</div>
+                      </div>
+                      <!-- Field Count -->
+                    <div class="flex items-center  mt-2 poppins-sb ">
+                      <div class="mr-2 whitespace-nowrap h-full flex items-center">Entry Count: </div>
+                        <div class="flex w-full h-10">
+                          <div   class="flex-1 h-full p-1 poppins W"><button (click)="removeEntry()" class=" text-lg text-gray-500 w-full h-full rounded-md hover:bg-gray-200 select-none"><i class='bx bx-chevron-left' ></i></button></div>
+                          <div class="flex-2 w-2/4 text-lime-600 justify-center h-full  items-center flex poppins-sb"> {{fieldCount}} </div>
+                          <div  class="flex-1 h-full p-1 poppins"><button (click)="addEntry()"  class="text-lg text-gray-500 w-full h-full rounded-md  hover:bg-gray-200 select-none"><i class='bx bx-chevron-right' ></i></button></div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- Farm Table Entry Settings -->
+                  <div *ngIf="currentHas('farmtable') && currentIsChild()">
+                    <!-- Title -->
+                    <div  class="flex items-center mb-2  h-10 ">
+                      <div class="poppins-sb text-gray-400">Table Entry Settings</div>
+                    </div>
+                     <!-- Content -->
+                     <div class="flex items-center">
+                      <div class="poppins-sb">Particular: </div>
+                      <input [value]="contentField" type="text" (keyup)="updateText($event)" placeholder="Enter Particular" class="ml-2 rounded-md w-full min-h-10 border-solid border-2 border-gray-300 focus:border-lime-600">
+                    </div>
+
+                       <!-- Font Style -->
+                      <div class="flex items-center h-10 mt-2 poppins-sb ">
+                        <div class="mr-2">Indented : </div>
+                        <div  class="flex-1 h-full p-1"><button 
+                          [ngClass]="{'bg-lime-600 hover:bg-lime-500': checkSettings('indented')}"
+                          (click)="toggleStyle('indented')" class="bg-blue-600 text-white w-full h-full rounded-md font-bold hover:bg-blue-500 select-none">Yes</button></div>
+                      </div>
+                      
+                  </div>
+
+
+                  <!-- Image Field Settings -->
+                  <div *ngIf="currentHas('imagefield')">
+                    <!-- Title -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins-sb text-gray-400">Image Field Settings</div>
+                      <!-- Delete -->
+                      <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                          <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Signature Field Settings -->
+                   <div *ngIf="currentHas('signaturefield')">
+                    <!-- Title -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins-sb text-gray-400">Signature Field Settings</div>
+                      <!-- Delete -->
+                      <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                          <div   class="w-full h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                      </div>
+                    </div>
+                     <!-- Signatory -->
+                    <div class="flex items-center">
+                      <div class="poppins-sb">Signatory: </div>
+                      <input [value]="contentField" type="text" (keyup)="updateText($event)" placeholder="Enter Signatory's Title" class="ml-2 rounded-md w-full min-h-10 border-solid border-2 border-gray-300 focus:border-lime-600">
+                    </div>
+                  </div>
+
+                  <!-- Divider Settings -->
+                  <div *ngIf="currentHas('divider')">
+                    <!-- Title -->
+                    <div  class="flex items-center justify-center mb-2">
+                      <div class="poppins-sb text-gray-400">Divider Settings</div>
+                      <!-- Delete -->
+                      <div class="flex-1 flex items-center h-10 justify-end poppins ">
+                          <div   class="w-2/3 h-full p-1"><button (click)="delete()" class="bg-red-600 text-white w-full h-full rounded-md  hover:bg-red-500">Delete</button></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

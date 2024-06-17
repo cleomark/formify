@@ -1,0 +1,44 @@
+export interface CsvRowData {
+    Task_Number: string;
+    Service_Group: string;
+    Service_Type: string;
+    Task_Priority: string;
+    Task_Status: string;
+    Assignee: string;
+    ppir_assignmentid: string;
+    ppir_insuranceid: string;
+    ppir_farmername: string;
+    ppir_address: string;
+    ppir_farmertype: string;
+    ppir_mobileno: string;
+    ppir_groupname: string;
+    ppir_groupaddress: string;
+    ppir_lendername: string;
+    ppir_lenderaddress: string;
+    ppir_cicno: string;
+    ppir_farmloc: string;
+    ppir_north: string;
+    ppir_south: string;
+    ppir_east: string;
+    ppir_west: string;
+    ppir_att_1: string;
+    ppir_att_2: string;
+    ppir_att_3: string;
+    ppir_att_4: string;
+    ppir_area_aci: string;
+    ppir_area_act: string;
+    ppir_dopds_aci: string;
+    ppir_dopds_act: string;
+    ppir_doptp_aci: string;
+    ppir_doptp_act: string;
+    ppir_svp_aci: string;
+    ppir_svp_act: string;
+    ppir_variety: string;
+    ppir_stagecrop: string;
+    ppir_remarks: string;
+    ppir_name_insured: string;
+    ppir_name_iuia: string;
+    ppir_sig_insured: string;
+    ppir_sig_iuia: string;
+  }
+  

@@ -1,0 +1,13 @@
+
+
+  input {
+    padding-right: 30px;
+    position: relative;
+  }
+
+  .search {
+    position: absolute;
+    top: 50%;
+    right: 10px; 
+    transform: translateY(-50%);
+  }

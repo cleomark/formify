@@ -1,0 +1,193 @@
+
+.topwrap .notif {
+    background-color: white;
+    color: #006398;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: -10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.maintopwrap{
+    padding: 10px;
+}
+
+.topwrap .notif ion-icon {
+    font-size: 23px;
+}
+
+.topwrap .notif .badge {
+    transform: translate(52%, -50%);
+    border: 2px solid white;
+    position: absolute;
+    background: #006398;
+    color: white;
+    border-radius: 50px;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.topwrap .notif .badge h2 {
+    color: white;
+    margin: 0;
+    font-size: 10px;
+}
+
+.topwrap {
+    display: flex;
+    width: 100%;
+}
+
+.topwrap .user h1 {
+    color: #006398;
+    font-weight: bolder;
+}
+ion-searchbar.search{
+    --color: black;
+    --placeholder-color: rgb(59, 59, 59);
+    --icon-color: rgb(59, 59, 59);
+    --clear-button-color: rgb(59, 59, 59);
+    --border-radius: 50px;
+  }
+
+.IC-filter{
+    position: absolute;
+    transform: translate(-13%, 14%);
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #00a457;
+    border-radius: 0px 20px 20px 0px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.IC-filter ion-img{
+    width: 23px;
+    height: 23px;
+    margin: 0;
+}
+.filter .filterwrap{
+    display: flex;
+    color:#006398;
+}
+.filter .filterwrap .filterbtn{ 
+    background-color: white;
+    border-radius: 50px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.actions{
+
+    padding-right: 6px;
+}
+.bar{
+    padding-left: 6px;
+}
+
+ion-action-sheet {
+    --background: #006398;
+    --backdrop-opacity: 0.6;
+    --button-color: rgb(210, 208, 208);
+    --color: #fff;
+}
+
+
+ .forms{
+    background: linear-gradient(to bottom, rgba(26, 151, 57, 0.19), rgb(26, 151, 58)), url('../../../assets/home/cardbg.png');
+    background-size: cover;
+    background-position:10%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    background: rgba(5, 97, 147, 0.701);
+    height: 35px;
+    width: 100%;
+    border-radius:0px 0px 6px 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+    color: white;
+ }
+ .footer h1 {
+   font-size: 13px;
+ }
+
+ 
+ .forms {   
+    position: relative;
+ }
+ .formwraping {
+    max-height: 650px;
+    overflow-y: auto;
+    border-radius: 12px;
+}
+
+.formwraping::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.formwraping::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.formwraping::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Add this style to override the default scrollbar styles in Firefox */
+.formwraping {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+
+ion-searchbar.search {
+    --background: transparent;
+    --clear-button-color: #fff;
+    --border:transparent;
+
+  }
+  
+  ion-searchbar.ios.search {
+    --cancel-button-color: #494949;
+  }
+  
+  ion-searchbar.md.search {
+    --cancel-button-color: #494949;
+  }
+  
+
+@media screen and (max-width: 400px) {
+    .topwrap .user h1 {
+        font-size: 20px;
+        color: #006398;
+        font-weight: bolder;
+    }
+    .forms{
+      height: 132px;
+      }
+      .swiper-wrapper{
+        gap:13px;
+      }
+      .formwraping {
+        max-height: 420px;
+    }
+    
+}

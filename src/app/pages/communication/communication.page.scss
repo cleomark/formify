@@ -1,0 +1,15 @@
+body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        .glowing-marker {
+            background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: glowing 1s infinite alternate;
+        }
+
+        @keyframes glowing {
+            from { box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
+            to { box-shadow: 0 0 20px #ff5722, 0 0 30px #ff5722, 0 0 40px #ff5722; }
+        }

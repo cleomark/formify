@@ -1,0 +1,27 @@
+<div class="flex h-full justify-center items-center bg-transparent">
+  <div class="modal-container h-fit w-3/4 p-5 rounded-lg relative">
+    <ion-icon
+      name="close-outline"
+      class="exit-icon absolute top-2.5 right-2.5 text-xl"
+      (click)="exitModal()"
+    ></ion-icon>
+    <div class="text-center">
+      <h2 class="poppins-b text-xl mb-4">SELECT FORM</h2>
+      <ul class="form-list">
+        <li
+          *ngFor="let form of forms"
+          [class.selected]="form === selectedForm"
+          (click)="selectFormClicked(form)"
+        >
+          {{ form }}
+        </li>
+      </ul>
+      <button
+        (click)="selectForm()"
+        class="select-button poppins tex-sm py-2 px-8 mt-2 border-none rounded-3xl"
+      >
+        SELECT
+      </button>
+    </div>
+  </div>
+</div>

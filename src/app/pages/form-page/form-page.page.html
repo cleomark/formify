@@ -1,0 +1,144 @@
+<div class="flex flex-col">
+  <div class="bg-white flex justify-between items-center py-0.5 px-2">
+    <ion-button
+      (click)="goToUploadPage()"
+      id="back-button"
+      fill="clear"
+      class="primary-color-text"
+    >
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+    <button
+      class="ion-button primary-color-text text-lg poppins-b mr-2 p-2"
+      (click)="downloadClicked()"
+    >
+      Download Form
+    </button>
+  </div>
+
+  <div
+    id="root-container"
+    class="scroll-container h-lvh bg-[#f0f0f0] overflow-y-auto"
+  >
+    <div class="form-container max-w-full mx-2.5 my-2.5 px-5 py-5 rounded-md">
+      <h2 class="poppins-b secondary-color-text text-center text-lg mb-4">
+        PERSONAL DETAILS
+      </h2>
+      <form
+        (ngSubmit)="onSubmit()"
+        #personalDetailsForm="ngForm"
+        class="roboto"
+      >
+        <div class="mb-6">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              [(ngModel)]="formData.firstName"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              [(ngModel)]="formData.lastName"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="formData.email"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              [(ngModel)]="formData.phone"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              [(ngModel)]="formData.address"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              [(ngModel)]="formData.city"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="state">State:</label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              [(ngModel)]="formData.state"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="zipCode">Zip Code:</label>
+            <input
+              type="text"
+              id="zipCode"
+              name="zipCode"
+              [(ngModel)]="formData.zipCode"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              [(ngModel)]="formData.dob"
+              required
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="!personalDetailsForm.valid"
+          class="w-3/6 py-2 px-2.5 text-white border-none rounded-3xl block m-auto"
+          (click)="onSubmit()"
+        >
+          Upload
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
